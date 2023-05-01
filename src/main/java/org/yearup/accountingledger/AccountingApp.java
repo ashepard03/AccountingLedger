@@ -14,7 +14,7 @@ public class AccountingApp {
 
         Scanner scanner = new Scanner(System.in);
         String heading = """
-                Welcome to the Java 10 Accounting Ledger
+                Welcome to the Java 10 Account Manager
                 """;
         String menu = """
                 Main Menu

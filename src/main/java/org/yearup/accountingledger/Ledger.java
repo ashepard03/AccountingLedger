@@ -1,5 +1,6 @@
 package org.yearup.accountingledger;
 
+import java.io.FileReader;
 import java.util.Scanner;
 
 public class Ledger {
@@ -28,11 +29,30 @@ public class Ledger {
                 viewPayments();
                 break;
             case "R":
-                reports();
+                reportsMenu();
+                break;
             case "H":
                 System.out.println("Returning to Home screen");
+                AccountingApp.homeScreen();
             default:
                 System.out.println("Invalid input. Please try again!");
         }
+    }
+
+    public static void viewEntries(){
+
+
+    }
+
+    public static void viewDeposits() {
+
+    }
+
+    public static void viewPayments() {
+
+    }
+
+    public static void reportsMenu(){
+
     }
 }
