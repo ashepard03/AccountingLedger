@@ -1,9 +1,43 @@
 package org.yearup.accountingledger;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ledger {
+
+    public static ArrayList<Transaction> transactions = getTransactions();
+
+    public static ArrayList<Transaction> getTransactions(){
+        ArrayList<Transaction> transactions = new ArrayList<>();
+        try {
+            FileReader fileReader = new FileReader("transactions.csv");
+            BufferedReader bufreader = new BufferedReader(fileReader);
+
+            String input;
+            while ((input = bufreader.readLine()) != null) {
+                String[] details = input.split("\\|");
+                LocalDate date = LocalDate.parse(details[0]);
+                LocalTime time = LocalTime.parse(details[1]);
+                String desciption = details[2];
+                String vendor = details[3];
+                double amount = Double.parseDouble(details[4]);
+
+                Transaction transaction = new Transaction(date, time, desciption,vendor,amount);
+                transactions.add(transaction);
+            }
+        }
+        catch (IOException e){
+            System.out.println("File not found");
+            System.exit(0);
+        }
+        return transactions;
+    }
     public static void showLedger(){
         Scanner scanner = new Scanner(System.in);
         String menu = """
@@ -40,7 +74,16 @@ public class Ledger {
     }
 
     public static void viewEntries(){
-
+        System.out.println("All transactions: ");
+        for (Transaction i : transactions){
+            System.out.println(
+                    i.getDate() + " " +
+                            i.getTime() + " " +
+                            i.getDescription() + " " +
+                            i.getVendor() + " " +
+                            i.getAmount()
+            );
+        }
 
     }
 
