@@ -10,8 +10,8 @@ public class AccountingApp {
 
     }
 
+    //display the home screen menu to the user and allows the user to select a menu option
     public static void homeScreen() {
-//display the home screen
         Scanner scanner = new Scanner(System.in);
         String heading = """
                 Welcome to the Java 10 Account Manager
@@ -28,7 +28,7 @@ public class AccountingApp {
         System.out.print(menu);
         String input = scanner.nextLine();
     //allows me to use the switch statement without accidentally falling through to another case
-    // once user selects option from the main menu they complete the method associated with it
+    // completes the method associated with th user menu choice
         switch (input.toUpperCase()) {
             case "D" -> addDeposit();
             case "P" -> makePayment();
@@ -71,7 +71,7 @@ public class AccountingApp {
         homeScreen();
     }
 
-    //allows the user to enter a payment they completed
+    //allows the user to enter a payment details
     public static void makePayment() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date YYYY-MM-DD: ");
@@ -85,7 +85,7 @@ public class AccountingApp {
         System.out.println("Enter deposit amount: ");
         double amount = scanner.nextDouble();
 
-        try {
+        try { //writes the payment entered above in the transactions.csv file with the proper format
             try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
                 fileWriter.write("\n" +
                         date + "|" +
@@ -102,7 +102,7 @@ public class AccountingApp {
         homeScreen();
     }
 
-    //takes user to the ledger class menu
+    //takes user to the ledger class menu to carry out those tasks
     public static void showLedger() {
         Ledger.showLedger();
     }
