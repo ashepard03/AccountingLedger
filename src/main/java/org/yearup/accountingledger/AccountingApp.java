@@ -11,7 +11,7 @@ public class AccountingApp {
     }
 
     public static void homeScreen() {
-
+//display the home screen
         Scanner scanner = new Scanner(System.in);
         String heading = """
                 Welcome to the Java 10 Account Manager
@@ -27,25 +27,20 @@ public class AccountingApp {
         System.out.println(heading);
         System.out.print(menu);
         String input = scanner.nextLine();
-
+    //allows me to use the switch statement without accidentally falling through to another case
+    // once user selects option from the main menu they complete the method associated with it
         switch (input.toUpperCase()) {
-            case "D":
-                addDeposit();
-                break;
-            case "P":
-                makePayment();
-                break;
-            case "L":
-                showLedger();
-                break;
-            case "X":
+            case "D" -> addDeposit();
+            case "P" -> makePayment();
+            case "L" -> showLedger();
+            case "X" -> {
                 System.out.println("Exiting Jave 10 Accounting ledger");
                 System.exit(0);
-            default:
-                System.out.println("Invalid input. Please try again!");
+            }
+            default -> System.out.println("Invalid input. Please try again!");
         }
     }
-
+    //adds a deposit to the transactions csv file
     public static void addDeposit() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date YYYY-MM-DD: ");
@@ -60,13 +55,14 @@ public class AccountingApp {
         double amount = scanner.nextDouble();
 
         try {
-            FileWriter fileWriter = new FileWriter("transactions.csv", true);
-            fileWriter.write("\n" +
-                    date + "|" +
-                            time + "|" +
-                            description + "|" +
-                            vendor + "|" +
-                            amount);
+            try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
+                fileWriter.write("\n" +
+                        date + "|" +
+                        time + "|" +
+                        description + "|" +
+                        vendor + "|" +
+                        amount);
+            }
             System.out.println("Deposit added successfully");
         } catch (IOException e) {
             System.out.println("Error inputting data ");
@@ -75,6 +71,7 @@ public class AccountingApp {
         homeScreen();
     }
 
+    //allows the user to enter a payment they completed
     public static void makePayment() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Enter Date YYYY-MM-DD: ");
@@ -89,13 +86,14 @@ public class AccountingApp {
         double amount = scanner.nextDouble();
 
         try {
-            FileWriter fileWriter = new FileWriter("transactions.csv", true);
-            fileWriter.write("\n" +
-                    date + "|" +
-                    time + "|" +
-                    description + "|" +
-                    vendor + "|" + "-" +
-                    amount);
+            try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {
+                fileWriter.write("\n" +
+                        date + "|" +
+                        time + "|" +
+                        description + "|" +
+                        vendor + "|" + "-" +
+                        amount);
+            }
             System.out.println("Payment added successfully");
         } catch (IOException e) {
             System.out.println("Error inputting data ");
@@ -104,6 +102,7 @@ public class AccountingApp {
         homeScreen();
     }
 
+    //takes user to the ledger class menu
     public static void showLedger() {
         Ledger.showLedger();
     }
