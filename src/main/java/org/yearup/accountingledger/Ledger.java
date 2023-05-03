@@ -15,7 +15,7 @@ public class Ledger {
     public static ArrayList<Transaction> transactions = getTransactions();
 
     // creates a method that holds an arraylist of all the transactions read from the transactions.csv file
-    // also parses the strings inside the file an assigns then to appropiate variables
+    // also parses the strings inside the file an assigns then to appropriate variables
     public static ArrayList<Transaction> getTransactions() {
         //arraylist of transaction objects named transactions
         ArrayList<Transaction> transactions = new ArrayList<>();
@@ -39,8 +39,14 @@ public class Ledger {
             System.out.println("The File not found");
             System.exit(0);
         }
+        Comparator<Transaction> compareByDate = Comparator.comparing(Transaction::getDate).reversed();
+        Comparator<Transaction> compareByTime = Comparator.comparing(Transaction::getTime).reversed();
+        Comparator<Transaction> compareByDateTime = compareByDate.thenComparing(compareByTime);
+        transactions.sort(compareByDateTime);
         return transactions;
     }
+
+
 
     //displays the ledger menu
     public static void showLedger() {
@@ -72,55 +78,45 @@ public class Ledger {
 
     //prints out all the trasactions from the csv file by iterating through each entry
     public static void viewEntries() {
-        System.out.println("All Transactions: ");
-        Collections.sort(transactions, new Comparator<Transaction>() {
-            @Override
-            public int compare(Transaction t1, Transaction t2) {
-                return t2.getDate().compareTo(t1.getDate());
-            }
-        });
+        System.out.println("--------------------------------All Transactions----------------------------------");
+        printHeader();
+//        Collections.sort(transactions, new Comparator<Transaction>() {
+//            @Override
+//            public int compare(Transaction t1, Transaction t2) {
+//                return t2.getDate().compareTo(t1.getDate());
+//            }
+//        });
         for (Transaction i : transactions) {
-            System.out.println(
-                    i.getDate() + " " +
-                            i.getTime() + " " +
-                            i.getDescription() + " " +
-                            i.getVendor() + " " +
-                            i.getAmount()
-            );
-        }
+            System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+        }Reports.returnMenus();
     }
     public static void viewDeposits() {
-        System.out.println("All Deposits: ");
+        System.out.printf("%30s", "--------------------------------All Deposits--------------------------------------\n");
+        printHeader();
         for (Transaction i : transactions) {
             if (i.getAmount() > 0) {
-                System.out.println(
-                        i.getDate() + " " +
-                                i.getTime() + " " +
-                                i.getDescription() + " " +
-                                i.getVendor() + " " +
-                                i.getAmount()
-                );
+                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        }
+        }Reports.returnMenus();
     }
 
     public static void viewPayments() {
-        System.out.println("All Payments: ");
+        System.out.println("--------------------------------All Payments---------------------------------- ");
+        printHeader();
         for (Transaction i : transactions) {
             if (i.getAmount() < 0) {
-                System.out.println(
-                        i.getDate() + " " +
-                                i.getTime() + " " +
-                                i.getDescription() + " " +
-                                i.getVendor() + " " +
-                                i.getAmount()
-                );
+                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        }
+        }Reports.returnMenus();
     }
 
     //calls the reposts menu method from the reports class
     public static void reports(){
         Reports.reportsMenu();
+    }
+
+    public static void printHeader() {
+        System.out.printf("%-15s %-15s %-25s %-15s %-10s\n", "Date", "Time", "Description", "Vendor", "Amount");
+        System.out.println("----------------------------------------------------------------------------------");
     }
 }

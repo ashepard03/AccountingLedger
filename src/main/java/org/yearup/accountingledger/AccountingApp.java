@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class AccountingApp {
     public static void main(String[] args) {
         homeScreen();
-
     }
 
     //display the home screen menu to the user and allows the user to select a menu option
@@ -67,8 +66,7 @@ public class AccountingApp {
         } catch (IOException e) {
             System.out.println("Error inputting data ");
             throw new RuntimeException(e);
-        }
-        homeScreen();
+        } homeScreen();
     }
 
     //allows the user to enter a payment details
@@ -98,8 +96,7 @@ public class AccountingApp {
         } catch (IOException e) {
             System.out.println("Error inputting data ");
             throw new RuntimeException(e);
-        }
-        homeScreen();
+        } homeScreen();
     }
 
     //takes user to the ledger class menu to carry out those tasks
