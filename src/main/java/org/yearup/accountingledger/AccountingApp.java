@@ -2,16 +2,19 @@ package org.yearup.accountingledger;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class AccountingApp {
+
+    public static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
         homeScreen();
     }
 
     //display the home screen menu to the user and allows the user to select a menu option
     public static void homeScreen() {
-        Scanner scanner = new Scanner(System.in);
         String heading = """
                 Welcome to the Java 10 Account Manager
                 """;
@@ -41,11 +44,13 @@ public class AccountingApp {
     }
     //adds a deposit to the transactions csv file
     public static void addDeposit() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Date YYYY-MM-DD: ");
-        String date = scanner.nextLine();
-        System.out.println("Enter the time HH:MM:SS");
-        String time = scanner.nextLine();
+        //automatically adds the date and time for any deposit added to the transactions file
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String date = now.format(df);
+        String time = now.format(tf);
+
         System.out.println("Enter item description: ");
         String description = scanner.nextLine();
         System.out.println("Enter Vendor: ");
@@ -71,16 +76,17 @@ public class AccountingApp {
 
     //allows the user to enter a payment details
     public static void makePayment() {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter Date YYYY-MM-DD: ");
-        String date = scanner.nextLine();
-        System.out.println("Enter the time HH:MM:SS");
-        String time = scanner.nextLine();
+        LocalDateTime now = LocalDateTime.now();
+        DateTimeFormatter df = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        DateTimeFormatter tf = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String date = now.format(df);
+        String time = now.format(tf);
+
         System.out.println("Enter item description: ");
         String description = scanner.nextLine();
         System.out.println("Enter Vendor: ");
         String vendor = scanner.nextLine();
-        System.out.println("Enter deposit amount: ");
+        System.out.println("Enter payment amount: ");
         double amount = scanner.nextDouble();
 
         try { //writes the payment entered above in the transactions.csv file with the proper format

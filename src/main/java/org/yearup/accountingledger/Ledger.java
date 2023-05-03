@@ -10,6 +10,8 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Scanner;
 
+import static org.yearup.accountingledger.AccountingApp.scanner;
+
 public class Ledger {
 
     public static ArrayList<Transaction> transactions = getTransactions();
@@ -48,7 +50,6 @@ public class Ledger {
 
     //displays the ledger menu
     public static void showLedger() {
-        Scanner scanner = new Scanner(System.in);
         String menu = """
                 -------Ledger Menu--------
                 [A] View All Transactions
@@ -74,7 +75,7 @@ public class Ledger {
         }
     }
 
-    //prints out all the trasactions from the csv file by iterating through each entry
+    //prints out all the transactions from the csv file by iterating through each entry
     public static void viewEntries() {
         System.out.println("--------------------------------All Transactions----------------------------------");
         printHeader();
@@ -83,6 +84,8 @@ public class Ledger {
             System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         }Reports.returnMenus();
     }
+
+    //Prints only positive transactions
     public static void viewDeposits() {
         System.out.printf("%30s", "--------------------------------All Deposits--------------------------------------\n");
         printHeader();
@@ -94,6 +97,7 @@ public class Ledger {
         }Reports.returnMenus();
     }
 
+    //prints only negative (payments) transactions
     public static void viewPayments() {
         System.out.println("--------------------------------All Payments---------------------------------- ");
         printHeader();

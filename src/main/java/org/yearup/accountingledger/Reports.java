@@ -6,10 +6,10 @@ import java.util.*;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 import static org.yearup.accountingledger.Ledger.*;
-
+import static org.yearup.accountingledger.AccountingApp.scanner;
 public class Reports {
+    //displays the menu for the reports section of the ledger and allows the user to select an option from menu
     public static void reportsMenu() {
-        Scanner scanner = new Scanner(System.in);
         String menu = """
                 ------Reports Menu-------
                 [1] Month to Current Date
@@ -126,7 +126,6 @@ public class Reports {
 
     //displays all menus the user has encountered and allows them to select one or exit the program
     public static void returnMenus() {
-        Scanner scanner = new Scanner(System.in);
         String menu = """
                 [H] Home Screen
                 [L] Ledger Menu
@@ -143,7 +142,7 @@ public class Reports {
             case "L" -> Ledger.showLedger();
             case "R" -> reportsMenu();
             case "E" -> {
-                System.out.println("Exiting Java 10 Accounting Program");
+                System.out.println("Exiting Java 10 Accounting ProgramS");
                 System.exit(0);
             }
             default -> System.out.println("Invalid input. Please try again!");
