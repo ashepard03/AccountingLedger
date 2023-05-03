@@ -46,13 +46,11 @@ public class Ledger {
         return transactions;
     }
 
-
-
     //displays the ledger menu
     public static void showLedger() {
         Scanner scanner = new Scanner(System.in);
         String menu = """
-                Ledger Menu
+                -------Ledger Menu--------
                 [A] View All Transactions
                 [D] View Deposits Only
                 [P] View Payments Only
@@ -80,12 +78,7 @@ public class Ledger {
     public static void viewEntries() {
         System.out.println("--------------------------------All Transactions----------------------------------");
         printHeader();
-//        Collections.sort(transactions, new Comparator<Transaction>() {
-//            @Override
-//            public int compare(Transaction t1, Transaction t2) {
-//                return t2.getDate().compareTo(t1.getDate());
-//            }
-//        });
+
         for (Transaction i : transactions) {
             System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         }Reports.returnMenus();
@@ -93,6 +86,7 @@ public class Ledger {
     public static void viewDeposits() {
         System.out.printf("%30s", "--------------------------------All Deposits--------------------------------------\n");
         printHeader();
+
         for (Transaction i : transactions) {
             if (i.getAmount() > 0) {
                 System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
@@ -103,6 +97,7 @@ public class Ledger {
     public static void viewPayments() {
         System.out.println("--------------------------------All Payments---------------------------------- ");
         printHeader();
+
         for (Transaction i : transactions) {
             if (i.getAmount() < 0) {
                 System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());

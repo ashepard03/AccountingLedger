@@ -1,6 +1,5 @@
 package org.yearup.accountingledger;
 
-import java.sql.SQLOutput;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -12,7 +11,7 @@ public class Reports {
     public static void reportsMenu() {
         Scanner scanner = new Scanner(System.in);
         String menu = """
-                Reports Menu
+                ------Reports Menu-------
                 [1] Month to Current Date
                 [2] Previous Month
                 [3] Year to Current Date
@@ -26,9 +25,9 @@ public class Reports {
         scanner.nextLine();
 
         switch (input) {
-            case 1 -> monthCurrentDate();
+            case 1 -> monthToDate();
             case 2 -> previousMonth();
-            case 3 -> yearCurrentDate();
+            case 3 -> yearToDate();
             case 4 -> previousYear();
             case 5 -> searchVendor();
             case 0 -> reportsMenu();
@@ -36,91 +35,81 @@ public class Reports {
         }
     }
 
-
-    public static void monthCurrentDate() {
+    public static void monthToDate() {
         //range from 1st of month to current date
         // for every date within the range print them
-        LocalDate currentDate = LocalDate.now();
-        LocalDate firstOfCurrentMonth = currentDate.withDayOfMonth(1);
+        LocalDate today = LocalDate.now();
+        LocalDate firstOfCurrentMonth = today.withDayOfMonth(1);
         System.out.println("\n-------- All Transactions From " + firstOfCurrentMonth.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
-                currentDate.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"--------\n");
+                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"--------");
+        printHeader();
+
         for (Transaction i : transactions) {
-            //
-            if (isBetween(currentDate, firstOfCurrentMonth, i)) {
-                System.out.println(
-                        i.getDate() + " " +
-                                i.getTime() + " " +
-                                i.getDescription() + " " +
-                                i.getVendor() + " " +
-                                i.getAmount()
-                );
+            if (isBetween(today, firstOfCurrentMonth, i)) {
+                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         } returnMenus();
     }
 
     //compares the date of each item to be in an inclusive range from the current date back to the first of the month
-    private static boolean isBetween(LocalDate currentDate, LocalDate firstOfCurrentMonth, Transaction i) {
-        return (i.getDate().isBefore(currentDate) || i.getDate().isEqual(currentDate)) && (i.getDate().isAfter(firstOfCurrentMonth) || i.getDate().isEqual(firstOfCurrentMonth));
+    private static boolean isBetween(LocalDate today, LocalDate firstOfCurrentMonth, Transaction i) {
+        return (i.getDate().isBefore(today) || i.getDate().isEqual(today))
+                && (i.getDate().isAfter(firstOfCurrentMonth) || i.getDate().isEqual(firstOfCurrentMonth));
     }
 
     public static void previousMonth() {
-        transactions = getTransactions();
-        Collections.sort(transactions, new Comparator<Transaction>() {
-            public int compare(Transaction t1, Transaction t2) {
-                return t2.getDate().compareTo(t1.getDate());
-            }
-        });
         LocalDate today = LocalDate.now();
-        LocalDate previousMonth = today.minusMonths(1);
+        LocalDate prevMonth = today.minusMonths(1);
 
         //creates an array list that add the transactions that only match the previous month and prints them out
-        List<Transaction> previousMonthTransactions = new ArrayList<>();
+        List<Transaction> prevMonthTransactions = new ArrayList<>();
         for (Transaction transaction : transactions) {
             LocalDate transactionDate = transaction.getDate();
-            if (transactionDate.isAfter(previousMonth.withDayOfMonth(1).minusDays(1))
+            if (transactionDate.isAfter(prevMonth.withDayOfMonth(1).minusDays(1))
                     && transactionDate.isBefore(today.withDayOfMonth(1))) {
-                previousMonthTransactions.add(transaction);
+                prevMonthTransactions.add(transaction);
             }
         }
-        System.out.println("\n-------- Previous Month: " + previousMonth.getMonth() + "--------");
-        for (Transaction i : previousMonthTransactions) {
-            System.out.println(
-                    i.getDate() + " " +
-                            i.getTime() + " " +
-                            i.getDescription() + " " +
-                            i.getVendor() + " " +
-                            i.getAmount()
-            );
+        System.out.println("\n------------------------------Previous Month: " + prevMonth.getMonth() + "--------------------------------");
+        printHeader();
+        for (Transaction i : prevMonthTransactions) {
+            System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         } returnMenus();
     }
 
-    public static void yearCurrentDate() {
-        LocalDate currentDate = LocalDate.now();
-        LocalDate begOfYear = currentDate.with(firstDayOfYear());
-        System.out.println("\n-------- All Transactions From " + begOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
-                currentDate.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"--------\n");
+    //allows the user to search transactions from beg of year to the current date
+    public static void yearToDate() {
+        LocalDate today = LocalDate.now();
+        LocalDate begOfYear = today.with(firstDayOfYear());
+        System.out.println("\n---------------- All Transactions From " + begOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
+                today.format(DateTimeFormatter.ofPattern("MMMM, dd")) +"---------------------\n");
         printHeader();
+
         for (Transaction i : transactions) {
-            //
-            if (between(currentDate, begOfYear, i)) {
+            if (between(today, begOfYear, i)) {
                 System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         } returnMenus();
     }
 
     //compares the date of each item to be in an inclusive range from the current date back to the first of the year
-    private static boolean between(LocalDate currentDate, LocalDate begOfYear, Transaction i) {
-        return (i.getDate().isBefore(currentDate) || i.getDate().isEqual(currentDate)) && (i.getDate().isAfter(begOfYear) || i.getDate().isEqual(begOfYear));
+    private static boolean between(LocalDate today, LocalDate begOfYear, Transaction i) {
+        return (i.getDate().isBefore(today) || i.getDate().isEqual(today)) && (i.getDate().isAfter(begOfYear) || i.getDate().isEqual(begOfYear));
     }
 
     public static void previousYear() {
-        System.out.println("Enter the year for the transactions you would like to search by: ");
-        Scanner scanner = new Scanner(System.in);
-
+        LocalDate today = LocalDate.now();
+        System.out.println("--------------------------------Previous Year--------------------------------------\n");
+        printHeader();
+        for (Transaction i : transactions){
+            LocalDate year =  i.getDate();
+            if (year.getYear() == today.getYear() -1){
+                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+            }
+        }returnMenus();
     }
 
-    //allows the user to search by the vendor name
-    //for loop goes through each transaction and only prints those that match the user selection
+    //allows the user to search by the vendor name. For loop goes through each transaction and only prints those that match the user selection.
     public static void searchVendor() {
         System.out.println("Enter the vendor's name you would like to search by: ");
         Scanner scanner = new Scanner(System.in);
@@ -153,8 +142,8 @@ public class Reports {
             case "H" -> AccountingApp.homeScreen();
             case "L" -> Ledger.showLedger();
             case "R" -> reportsMenu();
-            case "X" -> {
-                System.out.println("Exiting Java 10 Accounting ledger");
+            case "E" -> {
+                System.out.println("Exiting Java 10 Accounting Program");
                 System.exit(0);
             }
             default -> System.out.println("Invalid input. Please try again!");
