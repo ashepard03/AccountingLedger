@@ -46,7 +46,7 @@ public class Reports {
 
         for (Transaction i : transactions) {
             if (isBetween(today, firstOfCurrentMonth, i)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         } returnMenus();
     }
@@ -73,12 +73,11 @@ public class Reports {
         System.out.println("\n------------------------------Previous Month: " + prevMonth.getMonth() + "--------------------------------");
         printHeader();
         for (Transaction i : prevMonthTransactions) {
-            System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+            System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
         } returnMenus();
     }
 
-    //allows the user to search transactions from beg of year to the current date
-    public static void yearToDate() {
+    public static void yearToDate() {//search transactions from beg. of year to the current date
         LocalDate today = LocalDate.now();
         LocalDate begOfYear = today.with(firstDayOfYear());
         System.out.println("\n---------------- All Transactions From " + begOfYear.format(DateTimeFormatter.ofPattern("MMMM, dd")) + " To " +
@@ -87,7 +86,7 @@ public class Reports {
 
         for (Transaction i : transactions) {
             if (between(today, begOfYear, i)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         } returnMenus();
     }
@@ -97,14 +96,14 @@ public class Reports {
         return (i.getDate().isBefore(today) || i.getDate().isEqual(today)) && (i.getDate().isAfter(begOfYear) || i.getDate().isEqual(begOfYear));
     }
 
-    public static void previousYear() {
+    public static void previousYear() { //searches for previous year only
         LocalDate today = LocalDate.now();
         System.out.println("--------------------------------Previous Year--------------------------------------\n");
         printHeader();
         for (Transaction i : transactions){
             LocalDate year =  i.getDate();
             if (year.getYear() == today.getYear() -1){
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         }returnMenus();
     }
@@ -119,7 +118,7 @@ public class Reports {
         printHeader();
         for (Transaction i : transactions) {
             if (i.getVendor().equalsIgnoreCase(vendor)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
         } returnMenus();
     }
