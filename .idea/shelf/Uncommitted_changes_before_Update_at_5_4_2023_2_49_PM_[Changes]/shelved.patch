@@ -1,0 +1,222 @@
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+new file mode 100644
+--- /dev/null	(date 1682954983978)
++++ b/.idea/misc.xml	(date 1682954983978)
+@@ -0,0 +1,14 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="ExternalStorageConfigurationManager" enabled="true" />
++  <component name="MavenProjectsManager">
++    <option name="originalFiles">
++      <list>
++        <option value="$PROJECT_DIR$/pom.xml" />
++      </list>
++    </option>
++  </component>
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="openjdk-20" project-jdk-type="JavaSDK">
++    <output url="file://$PROJECT_DIR$/out" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+new file mode 100644
+--- /dev/null	(date 1683223515488)
++++ b/.idea/workspace.xml	(date 1683223515488)
+@@ -0,0 +1,151 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="AutoImportSettings">
++    <option name="autoReloadType" value="SELECTIVE" />
++  </component>
++  <component name="ChangeListManager">
++    <list default="true" id="71afc954-f3f2-47f4-b08f-915f1d91b23e" name="Changes" comment="created a static scanner, changed the add deposit/payments to no longer have to ask the user for the time and date&#10;added a few more notes">
++      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/yearup/accountingledger/AccountingApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yearup/accountingledger/AccountingApp.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/org/yearup/accountingledger/Reports.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/yearup/accountingledger/Reports.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/transactions.csv" beforeDir="false" afterPath="$PROJECT_DIR$/transactions.csv" afterDir="false" />
++    </list>
++    <option name="SHOW_DIALOG" value="false" />
++    <option name="HIGHLIGHT_CONFLICTS" value="true" />
++    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
++    <option name="LAST_RESOLUTION" value="IGNORE" />
++  </component>
++  <component name="FileTemplateManagerImpl">
++    <option name="RECENT_TEMPLATES">
++      <list>
++        <option value="Class" />
++      </list>
++    </option>
++  </component>
++  <component name="Git.Settings">
++    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
++  </component>
++  <component name="MarkdownSettingsMigration">
++    <option name="stateVersion" value="1" />
++  </component>
++  <component name="MavenImportPreferences">
++    <option name="importingSettings">
++      <MavenImportingSettings>
++        <option name="workspaceImportEnabled" value="true" />
++      </MavenImportingSettings>
++    </option>
++  </component>
++  <component name="ProjectId" id="2PCJ9kLdAwDtU3IaeU4OJ5aDBAY" />
++  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
++  <component name="ProjectViewState">
++    <option name="hideEmptyMiddlePackages" value="true" />
++    <option name="showLibraryContents" value="true" />
++  </component>
++  <component name="PropertiesComponent"><![CDATA[{
++  "keyToString": {
++    "RunOnceActivity.OpenProjectViewOnStart": "true",
++    "RunOnceActivity.ShowReadmeOnStart": "true",
++    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
++    "last_opened_file_path": "C:/LearnToCode_Workshops/NeighborhoodLibrary",
++    "settings.editor.selected.configurable": "preferences.lookFeel"
++  }
++}]]></component>
++  <component name="RecentsManager">
++    <key name="MoveFile.RECENT_KEYS">
++      <recent name="C:\LearnToCode_Capstone\AccountingLedger" />
++    </key>
++  </component>
++  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
++  <component name="TaskManager">
++    <task active="true" id="Default" summary="Default task">
++      <changelist id="71afc954-f3f2-47f4-b08f-915f1d91b23e" name="Changes" comment="" />
++      <created>1682954982739</created>
++      <option name="number" value="Default" />
++      <option name="presentableId" value="Default" />
++      <updated>1682954982739</updated>
++    </task>
++    <task id="LOCAL-00001" summary="Initial commit- main app and transaction class">
++      <created>1682965963963</created>
++      <option name="number" value="00001" />
++      <option name="presentableId" value="LOCAL-00001" />
++      <option name="project" value="LOCAL" />
++      <updated>1682965963964</updated>
++    </task>
++    <task id="LOCAL-00002" summary="created ledger class">
++      <created>1682966628629</created>
++      <option name="number" value="00002" />
++      <option name="presentableId" value="LOCAL-00002" />
++      <option name="project" value="LOCAL" />
++      <updated>1682966628629</updated>
++    </task>
++    <task id="LOCAL-00003" summary="created ledger class and menu">
++      <created>1682967370472</created>
++      <option name="number" value="00003" />
++      <option name="presentableId" value="LOCAL-00003" />
++      <option name="project" value="LOCAL" />
++      <updated>1682967370472</updated>
++    </task>
++    <task id="LOCAL-00004" summary="Ledger class- display all entries &#10;created an array list to hold and display data in csv file">
++      <created>1682969450464</created>
++      <option name="number" value="00004" />
++      <option name="presentableId" value="LOCAL-00004" />
++      <option name="project" value="LOCAL" />
++      <updated>1682969450464</updated>
++    </task>
++    <task id="LOCAL-00005" summary="Ledger class- display all entries &#10;created an array list to hold and display data in csv file">
++      <created>1683034402647</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1683034402647</updated>
++    </task>
++    <task id="LOCAL-00006" summary="created reports class with menu options and methods to execute the options &#10;updated cases to enhanced switch statements">
++      <created>1683050683105</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1683050683105</updated>
++    </task>
++    <task id="LOCAL-00007" summary="finished the reports menu methods &#10;refactored a set of print lines">
++      <created>1683125769835</created>
++      <option name="number" value="00007" />
++      <option name="presentableId" value="LOCAL-00007" />
++      <option name="project" value="LOCAL" />
++      <updated>1683125769835</updated>
++    </task>
++    <task id="LOCAL-00008" summary="finished last reports method, sorted array by time and date, cleaned up code, make it print in a specified format">
++      <created>1683136457953</created>
++      <option name="number" value="00008" />
++      <option name="presentableId" value="LOCAL-00008" />
++      <option name="project" value="LOCAL" />
++      <updated>1683136457953</updated>
++    </task>
++    <task id="LOCAL-00009" summary="created a static scanner, changed the add deposit/payments to no longer have to ask the user for the time and date&#10;added a few more notes">
++      <created>1683141008050</created>
++      <option name="number" value="00009" />
++      <option name="presentableId" value="LOCAL-00009" />
++      <option name="project" value="LOCAL" />
++      <updated>1683141008050</updated>
++    </task>
++    <option name="localTasksCounter" value="10" />
++    <servers />
++  </component>
++  <component name="VcsManagerConfiguration">
++    <MESSAGE value="Initial commit- main app and transaction class" />
++    <MESSAGE value="created ledger class" />
++    <MESSAGE value="created ledger class and menu" />
++    <MESSAGE value="Ledger class- display all entries &#10;created an array list to hold and display data in csv file" />
++    <MESSAGE value="created reports class with menu options and methods to execute the options &#10;updated cases to enhanced switch statements" />
++    <MESSAGE value="finished the reports menu methods &#10;refactored a set of print lines" />
++    <MESSAGE value="finished last reports method, sorted array by time and date, cleaned up code, make it print in a specified format" />
++    <MESSAGE value="created a static scanner, changed the add deposit/payments to no longer have to ask the user for the time and date&#10;added a few more notes" />
++    <option name="LAST_COMMIT_MESSAGE" value="created a static scanner, changed the add deposit/payments to no longer have to ask the user for the time and date&#10;added a few more notes" />
++  </component>
++  <component name="XSLT-Support.FileAssociations.UIState">
++    <expand />
++    <select />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+new file mode 100644
+--- /dev/null	(date 1682954983993)
++++ b/.idea/vcs.xml	(date 1682954983993)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="VcsDirectoryMappings">
++    <mapping directory="$PROJECT_DIR$" vcs="Git" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/encodings.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/encodings.xml b/.idea/encodings.xml
+new file mode 100644
+--- /dev/null	(date 1682955008460)
++++ b/.idea/encodings.xml	(date 1682955008460)
+@@ -0,0 +1,7 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="Encoding">
++    <file url="file://$PROJECT_DIR$/src/main/java" charset="UTF-8" />
++    <file url="file://$PROJECT_DIR$/src/main/resources" charset="UTF-8" />
++  </component>
++</project>
+\ No newline at end of file

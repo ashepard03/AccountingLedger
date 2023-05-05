@@ -6,10 +6,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
-import java.util.Scanner;
-
 import static org.yearup.accountingledger.AccountingApp.scanner;
 
 public class Ledger {
@@ -27,15 +24,17 @@ public class Ledger {
 
             String input;
             while ((input = bufreader.readLine()) != null) {
-                String[] details = input.split("\\|");
-                LocalDate date = LocalDate.parse(details[0]);
-                LocalTime time = LocalTime.parse(details[1]);
-                String desciption = details[2];
-                String vendor = details[3];
-                double amount = Double.parseDouble(details[4]);
+                if (!input.isEmpty()){
+                    String[] details = input.split("\\|");
+                    LocalDate date = LocalDate.parse(details[0]);
+                    LocalTime time = LocalTime.parse(details[1]);
+                    String desciption = details[2];
+                    String vendor = details[3];
+                    double amount = Double.parseDouble(details[4]);
 
-                Transaction transaction = new Transaction(date, time, desciption, vendor, amount);
-                transactions.add(transaction);
+                    Transaction transaction = new Transaction(date, time, desciption, vendor, amount);
+                    transactions.add(transaction);
+                }
             }
         } catch (IOException e) {
             System.out.println("The File not found");
@@ -81,8 +80,8 @@ public class Ledger {
         printHeader();
 
         for (Transaction i : transactions) {
-            System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
-        }Reports.returnMenus();
+            System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+        }
     }
 
     //Prints only positive transactions
@@ -92,9 +91,9 @@ public class Ledger {
 
         for (Transaction i : transactions) {
             if (i.getAmount() > 0) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        }Reports.returnMenus();
+        }
     }
 
     //prints only negative (payments) transactions
@@ -104,9 +103,9 @@ public class Ledger {
 
         for (Transaction i : transactions) {
             if (i.getAmount() < 0) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-10.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        }Reports.returnMenus();
+        }
     }
 
     //calls the reposts menu method from the reports class
@@ -115,7 +114,7 @@ public class Ledger {
     }
 
     public static void printHeader() {
-        System.out.printf("%-15s %-15s %-25s %-15s %-10s\n", "Date", "Time", "Description", "Vendor", "Amount");
+        System.out.printf("%-13s %-13s %-25s %-25s %-30s\n", "Date", "Time", "Description", "Vendor", "Amount");
         System.out.println("----------------------------------------------------------------------------------");
     }
 }

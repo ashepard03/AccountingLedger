@@ -39,7 +39,7 @@ public class AccountingApp {
                 case "L" -> showLedger();
                 case "X" -> {
                     screenDone = true;
-                    System.out.println("Exiting Jave 10 Accounting ledger");
+                    System.out.println("Exiting Java 10 Accounting ledger");
                     System.exit(0);
                 }
                 default -> System.out.println("Please select another option from the menu");
@@ -92,6 +92,7 @@ public class AccountingApp {
         String vendor = scanner.nextLine();
         System.out.println("Enter payment amount: ");
         double amount = scanner.nextDouble();
+        scanner.nextLine();
 
         try { //writes the payment entered above in the transactions.csv file with the proper format
             try (FileWriter fileWriter = new FileWriter("transactions.csv", true)) {

@@ -46,9 +46,9 @@ public class Reports {
 
         for (Transaction i : transactions) {
             if (isBetween(today, firstOfCurrentMonth, i)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        } returnMenus();
+        }
     }
 
     //compares the date of each item to be in an inclusive range from the current date back to the first of the month
@@ -73,8 +73,8 @@ public class Reports {
         System.out.println("\n------------------------------Previous Month: " + prevMonth.getMonth() + "--------------------------------");
         printHeader();
         for (Transaction i : prevMonthTransactions) {
-            System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
-        } returnMenus();
+            System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+        }
     }
 
     public static void yearToDate() {//search transactions from beg. of year to the current date
@@ -86,9 +86,9 @@ public class Reports {
 
         for (Transaction i : transactions) {
             if (between(today, begOfYear, i)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        } returnMenus();
+        }
     }
 
     //compares the date of each item to be in an inclusive range from the current date back to the first of the year
@@ -103,9 +103,9 @@ public class Reports {
         for (Transaction i : transactions){
             LocalDate year =  i.getDate();
             if (year.getYear() == today.getYear() -1){
-                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        }returnMenus();
+        }
     }
 
     //allows the user to search by the vendor name. For loop goes through each transaction and only prints those that match the user selection.
@@ -118,33 +118,8 @@ public class Reports {
         printHeader();
         for (Transaction i : transactions) {
             if (i.getVendor().equalsIgnoreCase(vendor)) {
-                System.out.printf("%-15s %-15s %-25s %-15s %-20.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
+                System.out.printf("%-13s %-13s %-25s %-25s %-30.2f\n", i.getDate(), i.getTime(), i.getDescription(), i.getVendor(), i.getAmount());
             }
-        } returnMenus();
-    }
-
-    //displays all menus the user has encountered and allows them to select one or exit the program
-    public static void returnMenus() {
-        String menu = """
-                [H] Home Screen
-                [L] Ledger Menu
-                [R] Reports Menu
-                [E] Exit program
-                """;
-        System.out.println("\nWhich menu would you like to return to?");
-        System.out.println("---------------------------------------");
-        System.out.println(menu);
-
-        String input = scanner.nextLine();
-        switch (input.toUpperCase()) {
-            case "H" -> AccountingApp.homeScreen();
-            case "L" -> Ledger.showLedger();
-            case "R" -> reportsMenu();
-            case "E" -> {
-                System.out.println("Exiting Java 10 Accounting ProgramS");
-                System.exit(0);
-            }
-            default -> System.out.println("Invalid input. Please try again!");
         }
     }
 }
