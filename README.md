@@ -1,6 +1,6 @@
 # Accounting Ledger
 This java applications allows the user to add their transactions and search through existing transactions with date ranges.
-## Accounting ledger Features
+## Accounting Ledger Features
 - Adding deposit transactions
 - Adding payment transactions
 - Report Search options:
