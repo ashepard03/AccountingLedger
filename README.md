@@ -3,7 +3,7 @@ This java applications allows the user to add their transactions and search thro
 ## Accounting ledger Features
 - Adding deposit transactions
 - Adding payment transactions
-- Report Search options
+- Report Search options:
   - Month to the current day
   - Previous month
   - Year to the current date
