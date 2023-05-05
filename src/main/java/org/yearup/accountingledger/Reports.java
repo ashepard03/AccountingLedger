@@ -10,28 +10,31 @@ import static org.yearup.accountingledger.AccountingApp.scanner;
 public class Reports {
     //displays the menu for the reports section of the ledger and allows the user to select an option from menu
     public static void reportsMenu() {
-        String menu = """
-                ------Reports Menu-------
-                [1] Month to Current Date
-                [2] Previous Month
-                [3] Year to Current Date
-                [4] Previous Year
-                [5] Search by Vendor
-                [0] Return to Reports Menu
-                """;
+        boolean screenDone = false;
+        while (!screenDone) {
+            String menu = """
+                    ------Reports Menu-------
+                    [1] Month to Current Date
+                    [2] Previous Month
+                    [3] Year to Current Date
+                    [4] Previous Year
+                    [5] Search by Vendor
+                    [0] Return to Reports Menu
+                    """;
 
-        System.out.print(menu);
-        int input = scanner.nextInt();
-        scanner.nextLine();
+            System.out.print(menu);
+            int input = scanner.nextInt();
+            scanner.nextLine();
 
-        switch (input) {
-            case 1 -> monthToDate();
-            case 2 -> previousMonth();
-            case 3 -> yearToDate();
-            case 4 -> previousYear();
-            case 5 -> searchVendor();
-            case 0 -> reportsMenu();
-            default -> System.out.println("Invalid input. Please try again!");
+            switch (input) {
+                case 1 -> monthToDate();
+                case 2 -> previousMonth();
+                case 3 -> yearToDate();
+                case 4 -> previousYear();
+                case 5 -> searchVendor();
+                case 0 -> reportsMenu();
+                default -> System.out.println("Invalid input. Please try again!");
+            }
         }
     }
 
