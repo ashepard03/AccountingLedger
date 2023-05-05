@@ -1,9 +1,9 @@
 # Accounting Ledger
 This java applications allows the user to add their transactions and search through existing transactions with date ranges.
-## Accounting ledger Features
+## Accounting Ledger Features
 - Adding deposit transactions
 - Adding payment transactions
-- Search options
+- Report Search options:
   - Month to the current day
   - Previous month
   - Year to the current date
@@ -13,8 +13,9 @@ This java applications allows the user to add their transactions and search thro
   - Main class: AccountingApp.java
   - Any dates should be entered as YYYY-MM-DD
   - All amounts should be entered as numbers
+  - All transactions are read from and added to the transactions.csv file
 #### Thanks
-- I would like to thank Anne (for breaking my code lol), Mohammed, Cristi and Javier for helping me along the way.
+- I would like to thank Anne (for breaking my code lol), Mohammed, Cristi, Javier, and Nabil for helping me along the way.
 
 # Main Menu
 ![image](https://user-images.githubusercontent.com/129906864/236238676-ea7e24d4-88b6-43df-911d-eb80e767e174.png)
@@ -35,5 +36,4 @@ This java applications allows the user to add their transactions and search thro
 ![image](https://user-images.githubusercontent.com/129906864/236239868-63df8df5-aa42-41d5-968e-3bd3efa5e6ba.png)
 
 # Interesting Code
-I think its interesting because I do the comparrison in a separate method to make the method easier to read and understand
 ![image](https://user-images.githubusercontent.com/129906864/236240798-55a7d6ce-dc3e-432d-8cc6-9b9de07f78d2.png)
