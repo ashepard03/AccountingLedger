@@ -13,6 +13,7 @@ This java applications allows the user to add their transactions and search thro
   - Main class: AccountingApp.java
   - Any dates should be entered as YYYY-MM-DD
   - All amounts should be entered as numbers
+  - All transactions are read from and added to the transaction.csv file
 #### Thanks
 - I would like to thank Anne (for breaking my code lol), Mohammed, Cristi, Javier, and Nabil for helping me along the way.
 
