@@ -35,5 +35,4 @@ This java applications allows the user to add their transactions and search thro
 ![image](https://user-images.githubusercontent.com/129906864/236239868-63df8df5-aa42-41d5-968e-3bd3efa5e6ba.png)
 
 # Interesting Code
-I think its interesting because I do the comparrison in a separate method to make the method easier to read and understand
 ![image](https://user-images.githubusercontent.com/129906864/236240798-55a7d6ce-dc3e-432d-8cc6-9b9de07f78d2.png)
